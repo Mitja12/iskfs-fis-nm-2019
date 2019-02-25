@@ -1,8 +1,7 @@
-var http = require("http").createServer(handler); // pri req - handler
-var io = require("socket.io").listen(http); // socket.io knjižnica
-var fs = require("fs"); // spremenljivka za "file system" za branje .html dat.
-var firmata = require("firmata"); // za komunikacijo z mikrokontrolerjem
-
+var http = require("http").createServer(handler); 
+var io = require("socket.io").listen(http); 
+var fs = require("fs"); 
+var firmata = require("firmata"); 
 console.log("Zagon aplikacije");
 
 var board = new firmata.Board("/dev/ttyACM0", function(){
@@ -25,7 +24,7 @@ function handler(req, res) {
     })
 }
 
-http.listen(8080); // strežnik bo poslušal na vratih 8080
+http.listen(8080);
 
 var pošljiVrednostPrekoVtičnika = function(){}; // spr. za pošiljanje sporočil
 
@@ -38,7 +37,7 @@ io.sockets.on("connection", function(socket) {
         io.sockets.emit("sporočiloKlientu", value);
     }
     
-}); // konec "sockets.on connection"
+}); 
 
 board.digitalRead(2, function(value) {
     if (value == 0) {
@@ -52,6 +51,6 @@ board.digitalRead(2, function(value) {
         pošljiVrednostPrekoVtičnika(1);
     }
     
-}); // konec "board.digitalRead"
+}); 
 
-}); // konec "board.on ready"
+}); 
