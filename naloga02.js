@@ -19,7 +19,7 @@ var board = new firmata.Board("/dev/ttyACM0", function(){// ACM (Abstract Contro
 });
 
 function handler(req, res) { // "handler", ki je uporabljen pri require("http").createServer(handler)
-    fs.readFile(__dirname + "/naloga01.html", // povemo, da bomo ob zahtevi ("request") posredovali
+    fs.readFile(__dirname + "/naloga02.html", // povemo, da bomo ob zahtevi ("request") posredovali
     function (err, data) {                    // klientu datoteko primer04.html iz diska strežnika
         if (err) {
             res.writeHead(500, {"Content-Type": "text/plain"});
